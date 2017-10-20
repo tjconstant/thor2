@@ -73,7 +73,7 @@ thorlabs_filter.import <- function(name){
 #'
 #' @return A sspline function accepting wavelength_nm argument
 #' @note This is an internal function for thor2, and not intended for use outside of it
-#'
+#' @export
 #' @examples
 #' FEL0450 <- thorlabs_filter.spline("FEL0450")
 #'

@@ -15,6 +15,9 @@ A sspline function accepting wavelength_nm argument
 \description{
 Get spline function from transmission data
 }
+\note{
+This is an internal function for thor2, and not intended for use outside of it
+}
 \examples{
 FEL0450 <- thorlabs_filter.spline("FEL0450")
 

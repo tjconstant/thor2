@@ -7,11 +7,11 @@
 thorlabs_filter.exists(name)
 }
 \arguments{
-\item{name}{}
-}
-\value{
-
+\item{name}{The ThorLabs designation of the filter (for example FEL0550)}
 }
 \description{
 Check filter exists
+}
+\note{
+This is an internal function for thor2, and not intended for use outside of it
 }

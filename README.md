@@ -4,7 +4,7 @@ Optical response of various thorlab components for use in R
 The main function is named `thorlabs_filter()` and will return the fractional transmission given the wavelength(s) of a named filter. For example:
 
 ```r
-thorlabs_filter(thorlabs_filter(name = "FEL0450", wavelength_nm = 200:700)
+thorlabs_filter(name = "FEL0450", wavelength_nm = 200:700)
 ```
 
 Returns the transmission of a long-pass 450 nm cut-off filter in the range 200 nm to 700 nm. 

@@ -20,7 +20,7 @@ FES0650(wavelength_nm = 500)
 # as before
 ```
 
-For backwards compatibility with thor (v1), the FEL0550, FEL0600 and FES550 filters are exported to to the global enviroment when the package loads. The APD120A2 photodetetor is also avaliable.
+For backwards compatibility with thor (v1), the FEL0550, FEL0600 and FES550 filters are exported to to the global enviroment automatically when the package loads. The APD120A2 photodetetor is also avaliable.
 
 --------
 

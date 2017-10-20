@@ -2,7 +2,7 @@
 % Please edit documentation in R/filters.R
 \name{thorlabs_filter.spline}
 \alias{thorlabs_filter.spline}
-\title{Get spline function from transmission data}
+\title{Get spline function from Transmission data}
 \usage{
 thorlabs_filter.spline(name)
 }
@@ -13,7 +13,7 @@ thorlabs_filter.spline(name)
 A sspline function accepting wavelength_nm argument
 }
 \description{
-Get spline function from transmission data
+Get spline function from Transmission data
 }
 \note{
 This is an internal function for thor2, and not intended for use outside of it

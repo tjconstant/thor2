@@ -15,12 +15,12 @@ thorlabs_filter <- function(name, wavelength_nm){
 
   thorlabs_filter.exists(name)
 
-  Transmission_Function <- thorlabs_filter.spline(name)
+  transmission_function <- thorlabs_filter.spline(name)
 
-  Transmission_pct <- Transmission_Function(wavelength_nm)
-  Transmission_frac <- Transmission_pct/100
+  transmission_pct <- transmission_function(wavelength_nm)
+  transmission_frac <- transmission_pct/100
 
-  return(Transmission_frac)
+  return(transmission_frac)
 }
 
 #' Plot the Transmission Spectra of Thorlabs Filter
@@ -67,7 +67,7 @@ thorlabs_filter.import <- function(name){
 #  #### Internal Functions #####
 
 
-#' Get spline function from transmission data
+#' Get spline function from Transmission data
 #'
 #' @inheritParams thorlabs_filter
 #'
@@ -79,19 +79,19 @@ thorlabs_filter.import <- function(name){
 #'
 thorlabs_filter.spline <- function(name){
 
-  Transmission <- subset(filters, filter == name)  # from manual
+  transmission <- subset(filters, filter == name)  # from manual
 
-  Transmission_Function <- function(wavelength_nm) {
+  transmission_function <- function(wavelength_nm) {
 
-    if((max(wavelength_nm) > max(Transmission[[1]]) | (min(wavelength_nm) < min(Transmission[[1]])))){
+    if((max(wavelength_nm) > max(transmission[[1]]) | (min(wavelength_nm) < min(transmission[[1]])))){
       warning("wavelength is outside dataset range")
     }
 
-    return(stats::splinefun(Transmission[[1]], Transmission[[2]])(wavelength_nm))
+    return(stats::splinefun(transmission[[1]], transmission[[2]])(wavelength_nm))
 
   }
 
-  return(Transmission_Function)
+  return(transmission_function)
 
 }
 

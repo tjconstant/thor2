@@ -1,5 +1,5 @@
 # thor2
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/tjconstant/thor2?branch=master&svg=true)](https://ci.appveyor.com/project/tjconstant/thor2)[![Build Status](https://travis-ci.org/tjconstant/thor2.svg?branch=master)](https://travis-ci.org/tjconstant/thor2)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/tjconstant/thor2?branch=master&svg=true)](https://ci.appveyor.com/project/tjconstant/thor2) [![Build Status](https://travis-ci.org/tjconstant/thor2.svg?branch=master)](https://travis-ci.org/tjconstant/thor2)
 
 
 Optical response of various thorlab components for use in R

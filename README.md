@@ -1,32 +1,41 @@
-# thor2
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/tjconstant/thor2?branch=master&svg=true)](https://ci.appveyor.com/project/tjconstant/thor2) [![Build Status](https://travis-ci.org/tjconstant/thor2.svg?branch=master)](https://travis-ci.org/tjconstant/thor2)
+# thor2 - dev_RC
+### Object Oriented Experimental Branch
+
+------
+
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/tjconstant/thor2?branch=dev_RC&svg=true)](https://ci.appveyor.com/project/tjconstant/thor2) [![Build Status](https://travis-ci.org/tjconstant/thor2.svg?branch=dev_RC)](https://travis-ci.org/tjconstant/thor2)
 
 
 Optical response of various thorlab components for use in R
 
-The main function is named `thorlabs_filter()` and will return the fractional transmission given the wavelength(s) of a named filter. For example:
+The main function is named `thorlabs_filter_import()` and will return a object of class `thorlabs_filter` and load it into the enviroment.
 
 ```r
-thorlabs_filter(name = "FEL0450", wavelength_nm = 200:700)
+thorlabs_filter_import("FES0550")
+
+class(FES0550)
+[1] "thorlabs_filter"
 ```
 
-Returns the transmission of a long-pass 450 nm cut-off filter in the range 200 nm to 700 nm. 
+The following fields and methods are currently implemented: `name` `data` `plot()` `Transmission()`. 
 
-To quickly see the data and fit for any filter use `thorlabs_filter.plot()`.
+To quickly see the data and fit for any filter: 
 
-To export a filter's function to the global enviroment (following the naming convention of functions from the orginal `thor` package), you can do the following:
+```r 
+FEL0550$plot()
+````
+
+To access a fit of the filter's transmission funciton:
 
 ```r
-thorlabs_filter.import("FES0650")
-# Then just use,
-FES0650(wavelength_nm = 500)
-# as before
+FEL0550$Transmission(200:700)
 ```
 
-For backwards compatibility with thor (v1), the FEL0550, FEL0600 and FES550 filters are exported to to the global enviroment automatically when the package loads. The APD120A2 photodetetor is also avaliable.
+Returns the transmission from 200 nm to 700 nm.
 
 --------
 
 ## To Do
 
-* Abstract functions further to automatically deal with parameters other than wavelength / transmission
+* Look into default methods to avoid clunky $Transmission() call
+* Write documentation properly

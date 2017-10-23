@@ -2,7 +2,5 @@
 
 export(APD120A2)
 export(thorlabs_filter)
-export(thorlabs_filter.data)
-export(thorlabs_filter.import)
-export(thorlabs_filter.plot)
-export(thorlabs_filter.spline)
+export(thorlabs_filter_import)
+exportClasses(thorlabs_filter)

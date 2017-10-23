@@ -25,7 +25,7 @@ To quickly see the data and fit for any filter:
 FEL0550$plot()
 ````
 
-To access a fit of the filter's transmission funciton:
+To access a fit of the filter's transmission function:
 
 ```r
 FEL0550$Transmission(200:700)

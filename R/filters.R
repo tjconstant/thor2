@@ -86,7 +86,7 @@ thorlabs_filter.spline <- function(name){
   transmission_function <- function(wavelength_nm) {
 
     if((max(wavelength_nm) > max(transmission[[1]]) | (min(wavelength_nm) < min(transmission[[1]])))){
-      warning("wavelength is outside dataset range")
+      warning("Wavelength is outside dataset range")
     }
 
     return(stats::splinefun(transmission[[1]], transmission[[2]])(wavelength_nm))

@@ -29,4 +29,4 @@ For backwards compatibility with thor (v1), the FEL0550, FEL0600 and FES550 filt
 
 ## To Do
 
-* Abstract functions further to automatically deal with parameter other than wavelength / transmission
+* Abstract functions further to automatically deal with parameters other than wavelength / transmission

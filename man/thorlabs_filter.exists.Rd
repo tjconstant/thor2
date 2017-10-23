@@ -15,3 +15,6 @@ Check filter exists
 \note{
 This is an internal function for thor2, and not intended for use outside of it.
 }
+\examples{
+thor2:::thorlabs_filter.exists("FEL0400")
+}

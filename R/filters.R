@@ -51,7 +51,8 @@ thorlabs_filter.plot <- function(name, ...){
 #'
 #' @inheritParams thorlabs_filter
 #'
-#' @return a spline function named after the filter
+#' @return A spline function named after the filter.
+#' Note if the thorlabs filter name contains a dash (for example, to designate bandwidth), this will be replaced in the function name as an underscore. i.e. FB340-10 becomes FB340_10
 #' @export
 #'
 #' @examples
@@ -60,7 +61,7 @@ thorlabs_filter.plot <- function(name, ...){
 #'
 thorlabs_filter.import <- function(name){
   thorlabs_filter.exists(name)
-  eval(parse(text = paste(name, "<- function(wavelength_nm) thorlabs_filter.spline('",name,"')(wavelength_nm)/100", sep="")), envir = globalenv())
+  eval(parse(text = paste(gsub(pattern = "-", replacement = "_", name), "<- function(wavelength_nm) thorlabs_filter.spline('",name,"')(wavelength_nm)/100", sep="")), envir = globalenv())
 }
 
 
@@ -80,6 +81,7 @@ thorlabs_filter.import <- function(name){
 thorlabs_filter.spline <- function(name){
 
   transmission <- subset(filters, filter == name)  # from manual
+  transmission <- na.omit(transmission) # clean up in case of NAs
 
   transmission_function <- function(wavelength_nm) {
 

@@ -10,7 +10,8 @@ thorlabs_filter.import(name)
 \item{name}{The ThorLabs designation of the filter (for example FEL0550)}
 }
 \value{
-a spline function named after the filter
+A spline function named after the filter.
+Note if the thorlabs filter name contains a dash (for example, to designate bandwidth), this will be replaced in the function name as an underscore. i.e. FB340-10 becomes FB340_10
 }
 \description{
 Exports the given filter as a spline function to the global enviroment, under it's own named function.

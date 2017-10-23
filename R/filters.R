@@ -100,14 +100,27 @@ thorlabs_filter.spline <- function(name){
 #' @inheritParams thorlabs_filter
 #'
 #' @return NULL
-#' @note This is an internal function for thor2, and not intended for use outside of it
+#' @note This is an internal function for thor2, and not intended for use outside of it.
 #'
 #' @examples
+#' thor2:::thorlabs_filter.exists("FEL0400")
 thorlabs_filter.exists <- function(name){
+
   if(any(name == unique(filters$filter))){
 
+    return(TRUE)
+
   }else{
-    stop("Filter name does not exist in thor2 database")
+
+    fail_message <- "Filter name does not exist in thor2 database."
+    possibles <- agrep(pattern = name, x = unique(filters$filter), value = TRUE, ignore.case = TRUE)
+
+    if(length(possibles) > 0){
+      stop(paste(fail_message, "\n  Did you mean one of these?", paste(possibles, collapse = ", ")))
+    }else{
+      stop(fail_message)
+    }
+
   }
 }
 

@@ -1,7 +1,7 @@
 Package: thor2
 Type: Package
 Title: Thorlabs Optics and Equipment Curves
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: person("Tom", "Constant", email = "t.j.constant@gmail.com",
   role = c("aut", "cre"))
 Description: This package contains various functions for estimating Thorlab products operating parameters.

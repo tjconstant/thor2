@@ -13,5 +13,5 @@ thorlabs_filter.exists(name)
 Check filter exists
 }
 \note{
-This is an internal function for thor2, and not intended for use outside of it
+This is an internal function for thor2, and not intended for use outside of it.
 }

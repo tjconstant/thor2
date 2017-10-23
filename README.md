@@ -29,6 +29,4 @@ For backwards compatibility with thor (v1), the FEL0550, FEL0600 and FES550 filt
 
 ## To Do
 
-* Implement fuzzy search in the internal thorlabs_filter.exists() function.
 * Abstract functions further to automatically deal with parameter other than wavelength / transmission
-* Get namespace test working 

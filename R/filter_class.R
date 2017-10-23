@@ -16,6 +16,7 @@ thorlabs_filter <- setRefClass("thorlabs_filter",
                                    .exists()
 
                                    .self$data <- as.data.frame(subset(thor2:::filters, filter == name))
+                                   .self$data <- na.omit(.self$data)
                                    rownames(.self$data) <- seq(length=nrow(.self$data))
                                  },
                                  ### Exists: Does the filter exist in the database? ###
@@ -40,16 +41,13 @@ thorlabs_filter <- setRefClass("thorlabs_filter",
                                  ### Fit a spline to the filter data ###
                                  .spline = function(){
 
-                                   transmission <- data  # from manual
-                                   transmission <- na.omit(transmission) # clean up in case of NAs
-
                                    transmission_function <- function(wavelength_nm) {
 
-                                     if((max(wavelength_nm) > max(transmission[[1]]) | (min(wavelength_nm) < min(transmission[[1]])))){
+                                     if((max(wavelength_nm) > max(data[[1]]) | (min(wavelength_nm) < min(data[[1]])))){
                                        warning("Wavelength is outside dataset range")
                                      }
 
-                                     return(stats::splinefun(transmission[[1]], transmission[[2]])(wavelength_nm))
+                                     return(stats::splinefun(data[[1]], data[[2]])(wavelength_nm))
 
                                    }
 
@@ -66,13 +64,14 @@ thorlabs_filter <- setRefClass("thorlabs_filter",
                                  ### Return the Filter's transmission for a given wavelength ###
                                  Transmission = function(wavelength_nm){
 
-                                   .exists()
-
                                    transmission_pct <- .spline()(wavelength_nm)
 
                                    transmission_frac <- transmission_pct/100
 
                                    return(transmission_frac)
+                                 },
+                                 OD = function(wavelength_nm){
+                                   -log10(Transmission(wavelength_nm = wavelength_nm))
                                  }
                                ))
 

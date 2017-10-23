@@ -1,5 +1,5 @@
-# thor2 - dev_RC
-### Object Oriented Experimental Branch
+# thor2 - dev-eoo
+### Experimental Object Oriented Branch
 
 ------
 

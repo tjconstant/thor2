@@ -15,7 +15,8 @@ thorlabs_filter <- setRefClass("thorlabs_filter",
                                    .self$name <- name
                                    .exists()
 
-                                   .self$data <<- .getData()
+                                   .self$data <- as.data.frame(subset(thor2:::filters, filter == name))
+                                   rownames(.self$data) <- seq(length=nrow(.self$data))
                                  },
                                  ### Exists: Does the filter exist in the database? ###
                                  .exists = function(){
@@ -39,7 +40,7 @@ thorlabs_filter <- setRefClass("thorlabs_filter",
                                  ### Fit a spline to the filter data ###
                                  .spline = function(){
 
-                                   transmission <- subset(thor2:::filters, filter == name)  # from manual
+                                   transmission <- data  # from manual
                                    transmission <- na.omit(transmission) # clean up in case of NAs
 
                                    transmission_function <- function(wavelength_nm) {
@@ -55,23 +56,11 @@ thorlabs_filter <- setRefClass("thorlabs_filter",
                                    return(transmission_function)
 
                                  },
-                                 ### Return the Data ###
-                                 .getData = function(){
+                                 ### Plot the recorded filter response and fit ###
+                                 plot = function(...){
 
-                                   .exists()
-                                   data <- subset(thor2:::filters, filter == name)
-                                   data <- as.data.frame(data)
-                                   rownames(data) <- seq(length=nrow(data)) # reset row names after subsetting
-
-                                   return(data)
-                                 },
-                                 ### Plot the Filter's data and the fit###
-                                 plot = function(){
-
-                                   filter <- .getData()
-
-                                   graphics::plot(filter$`Wavelength (nm)`, 0.01*filter$`% Transmission`, xlab = "wavelength (nm)", ylab = "T", pch = 16)
-                                   graphics::lines(filter$`Wavelength (nm)`, .spline()(filter$`Wavelength (nm)`)/100, type='l', lwd = 2, col = 2)
+                                   graphics::plot(data$`Wavelength (nm)`, 0.01*data$`% Transmission`, xlab = "wavelength (nm)", ylab = "T", pch = 16, ...)
+                                   graphics::lines(data$`Wavelength (nm)`, .spline()(data$`Wavelength (nm)`)/100, type='l', lwd = 2, col = 2)
 
                                  },
                                  ### Return the Filter's transmission for a given wavelength ###
@@ -86,7 +75,6 @@ thorlabs_filter <- setRefClass("thorlabs_filter",
                                    return(transmission_frac)
                                  }
                                ))
-
 
 #' Title
 #'

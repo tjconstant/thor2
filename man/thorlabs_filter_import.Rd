@@ -9,6 +9,9 @@ thorlabs_filter_import(name)
 \arguments{
 \item{name}{The ThorLabs designation of the filter (for example FEL0550)}
 }
+\value{
+loads the specified thorlabs_filter object into the GlobalEnv
+}
 \description{
 Title
 }

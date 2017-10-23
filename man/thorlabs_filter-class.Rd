@@ -8,6 +8,9 @@
 \arguments{
 \item{name}{The ThorLabs designation of the filter (for example FEL0550)}
 }
+\value{
+$new() returns a thorlabs_filter object
+}
 \description{
 Title
 }

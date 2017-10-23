@@ -2,7 +2,7 @@
 #'
 #' @param name The ThorLabs designation of the filter (for example FEL0550)
 #'
-#' @return
+#' @return $new() returns a thorlabs_filter object
 #' @export thorlabs_filter
 #' @exportClass thorlabs_filter
 #'
@@ -80,7 +80,7 @@ thorlabs_filter <- setRefClass("thorlabs_filter",
 #'
 #' @param name The ThorLabs designation of the filter (for example FEL0550)
 #'
-#' @return
+#' @return loads the specified thorlabs_filter object into the GlobalEnv
 #' @export
 #'
 #' @examples

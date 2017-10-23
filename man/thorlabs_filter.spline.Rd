@@ -10,7 +10,7 @@ thorlabs_filter.spline(name)
 \item{name}{The ThorLabs designation of the filter (for example FEL0550)}
 }
 \value{
-A sspline function accepting wavelength_nm argument
+A spline function accepting wavelength_nm argument
 }
 \description{
 Get spline function from Transmission data

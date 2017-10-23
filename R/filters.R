@@ -35,11 +35,29 @@ thorlabs_filter <- function(name, wavelength_nm){
 #' thorlabs_filter.plot("FEL0700")
 thorlabs_filter.plot <- function(name, ...){
 
-  thorlabs_filter.exists(name)
-  filter <- subset(filters, filter == name)
+  filter <- thorlabs_filter.data(name)
 
   plot(filter$`Wavelength (nm)`, 0.01*filter$`% Transmission`, xlab = "wavelength (nm)", ylab = "T", pch = 16, ...)
   lines(filter$`Wavelength (nm)`, thorlabs_filter(name, filter$`Wavelength (nm)`), type='l', lwd = 2, col = 2)
+
+}
+
+#' Get the raw transmission spectra data of a filter provided by Thorlabs
+#'
+#' @inheritParams thorlabs_filter
+#'
+#' @return returns the provided transmission spectra from thorlabs as a dataframe
+#' @export
+#'
+#' @examples
+#' thorlabs_filter.data("FEL0700")
+thorlabs_filter.data <- function(name){
+
+  thorlabs_filter.exists(name)
+  data <- subset(filters, filter == name)
+  rownames(data) <- seq(length=nrow(data)) # reset row names after subsetting
+
+  return(data)
 
 }
 

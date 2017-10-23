@@ -15,8 +15,10 @@ thorlabs_filter <- setRefClass("thorlabs_filter",
                                    .self$name <- name
                                    .exists()
 
+                                   ## Data Tidy
                                    .self$data <- as.data.frame(subset(thor2:::filters, filter == name))
                                    .self$data <- na.omit(.self$data)
+                                   .self$data[[2]] <- .self$data[[2]]/100 # fractional transmission
                                    rownames(.self$data) <- seq(length=nrow(.self$data))
                                  },
                                  ### Exists: Does the filter exist in the database? ###
@@ -48,30 +50,27 @@ thorlabs_filter <- setRefClass("thorlabs_filter",
                                      }
 
                                      return(stats::splinefun(data[[1]], data[[2]])(wavelength_nm))
-
                                    }
 
                                    return(transmission_function)
-
                                  },
                                  ### Plot the recorded filter response and fit ###
                                  plot = function(...){
 
-                                   graphics::plot(data$`Wavelength (nm)`, 0.01*data$`% Transmission`, xlab = "wavelength (nm)", ylab = "T", pch = 16, ...)
-                                   graphics::lines(data$`Wavelength (nm)`, .spline()(data$`Wavelength (nm)`)/100, type='l', lwd = 2, col = 2)
+                                   graphics::plot(data$`Wavelength (nm)`, data$`% Transmission`, xlab = "wavelength (nm)", ylab = "T", pch = 16, ...)
+                                   graphics::lines(data$`Wavelength (nm)`, .spline()(data$`Wavelength (nm)`), type='l', lwd = 2, col = 2)
 
                                  },
                                  ### Return the Filter's transmission for a given wavelength ###
                                  Transmission = function(wavelength_nm){
 
-                                   transmission_pct <- .spline()(wavelength_nm)
-
-                                   transmission_frac <- transmission_pct/100
+                                   transmission_frac <- .spline()(wavelength_nm)
 
                                    return(transmission_frac)
                                  },
+                                 ### Return the Filter's optical density for a given wavelength ###
                                  OD = function(wavelength_nm){
-                                   -log10(Transmission(wavelength_nm = wavelength_nm))
+                                   return(-log10(Transmission(wavelength_nm = wavelength_nm)))
                                  }
                                ))
 

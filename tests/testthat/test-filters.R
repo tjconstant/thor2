@@ -13,3 +13,8 @@ test_that("can import filter to namespace", {
   result <- round(FES0550(wavelength_nm = 512), 3)
   expect_equal(result, 0.861)
 })
+
+test_that("exported function equals base function result", {
+  thorlabs_filter.import("FES0550")
+  expect_equal(thorlabs_filter("FES0550", wavelength_nm = 200:700), FES0550(200:700))
+})

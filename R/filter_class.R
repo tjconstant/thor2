@@ -69,10 +69,11 @@ thorlabs_filter <- setRefClass("thorlabs_filter",
                                    return(transmission_frac)
                                  },
                                  ### Return the Filter's optical density for a given wavelength ###
-                                 OD = function(wavelength_nm){
+                                 OpticalDensity = function(wavelength_nm){
                                    return(-log10(Transmission(wavelength_nm = wavelength_nm)))
                                    }
-                               ))
+                               )
+                               )
 
 #' Title
 #'

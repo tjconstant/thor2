@@ -2,7 +2,7 @@
 % Please edit documentation in R/filter_class.R
 \name{thorlabs_filter_import}
 \alias{thorlabs_filter_import}
-\title{Title}
+\title{Import Filter}
 \usage{
 thorlabs_filter_import(name)
 }
@@ -13,7 +13,7 @@ thorlabs_filter_import(name)
 loads the specified thorlabs_filter object into the GlobalEnv
 }
 \description{
-Title
+Create filter object given the thorlabs designation
 }
 \examples{
 thorlabs_filter_import("FEL0650")

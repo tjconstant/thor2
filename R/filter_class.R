@@ -1,10 +1,15 @@
 #' Title
 #'
-#' @param name The ThorLabs designation of the filter (for example FEL0550)
+# #' @param name The ThorLabs designation of the filter (for example FEL0550)
 #'
 #' @return $new() returns a thorlabs_filter object
 #' @export thorlabs_filter
 #' @exportClass thorlabs_filter
+#'
+#' @field name name
+#' @field data data
+#'
+#' @method plot plot
 #'
 #' @examples
 #'
@@ -75,7 +80,9 @@ thorlabs_filter <- setRefClass("thorlabs_filter",
                                )
                                )
 
-#' Title
+#' Import Filter
+#'
+#' Create filter object given the thorlabs designation
 #'
 #' @param name The ThorLabs designation of the filter (for example FEL0550)
 #'

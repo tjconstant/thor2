@@ -15,7 +15,9 @@ for(i in 1:length(dataset_files)){
   # Compensate for Thorlabs inconsistant naming
   if(names(data)[2] == "%Transmission") names(data)[2] <- "% Transmission"
   if(names(data)[2] == "Transmission (%)") names(data)[2] <- "% Transmission"
-  names(data)[2] <- "% Transmission"
+
+  # On Mac, some odd character handeling makes the above fail. Addded this line below in case of compiling on mac
+  #names(data)[2] <- "% Transmission"
 
   data <- data %>% tibble::add_column(filter = rep(dataset_names[i], length(data[[1]])))
   filters <- rbind(filters, data)

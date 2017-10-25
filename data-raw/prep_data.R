@@ -6,6 +6,7 @@ library(tibble)
 dataset_files <- dir("data-raw/", pattern = ".xlsx")
 dataset_file_paths <- dir("data-raw/", pattern = ".xlsx", full.names = TRUE)
 dataset_names <- gsub(pattern = ".xlsx", replacement = "", x = dataset_files)
+dataset_names <- gsub(pattern = "_Raw_Data", replacement = "", x = dataset_names)
 
 
 filters<- tibble::tibble()

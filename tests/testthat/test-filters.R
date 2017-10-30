@@ -28,4 +28,23 @@ test_that("all exported functions equals base function result", {
   }
 })
 
+test_that("filter can be plotted", {
+  expect_error(thorlabs_filter.plot("FES0550"), NA)
+})
+
+test_that("filter data is returned", {
+  expect_equal(thorlabs_filter.data("FEL0550")[1,1], 2600)
+})
+
+test_that("filter typo is noticed", {
+  expect_error(thorlabs_filter.exists("FEL0552"))
+})
+
+test_that("filter typo is noticed, but the typo is so bad no suggestions are returned", {
+  expect_error(thorlabs_filter.exists("FEL055d2"))
+})
+
+test_that("the legacy photodiode function works", {
+  expect_equal(round(APD120A2(555)), 470)
+})
 

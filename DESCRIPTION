@@ -9,6 +9,7 @@ Description: This package contains various functions for estimating Thorlab prod
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-Suggests: testthat
+Suggests: testthat,
+    covr
 RoxygenNote: 6.0.1
 Depends: R (>= 3.1.0)
